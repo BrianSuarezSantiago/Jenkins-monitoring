@@ -6,4 +6,4 @@ authentication_provider    = ["AWS_SSO"]
 permission_type            = "SERVICE_MANAGED"
 grafana_role_type          = "ADMIN"
 iam_grafana_role_name      = "GrafanaWorkspaceRole"
-grafana_workspace_name = "JenkinsMonitoringWorkspace"
+grafana_workspace_name     = "JenkinsMonitoringWorkspace"
