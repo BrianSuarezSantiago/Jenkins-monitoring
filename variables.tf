@@ -18,6 +18,14 @@ variable "grafana_workspace_name" {
   description = "Name of the Amazon Managed Service for Grafana (AMG) workspace"
 }
 
+variable "grafana_workspace_description" {
+  description = "Description of the Amazon Managed Service for Grafana (AMG) workspace"
+}
+
+variable "grafana_workspace_version" {
+  description = "Version of the Grafana workspace to be created (e.g., 9.4)"
+}
+
 variable "account_access_type" {
   description = "Type of account access for the Grafana workspace (e.g., CURRENT_ACCOUNT or ORGANIZATION)"
 }

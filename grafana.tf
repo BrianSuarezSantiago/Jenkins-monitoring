@@ -1,6 +1,8 @@
 # Creates an Amazon Managed Service for Grafana (AMG) workspace
 resource "aws_grafana_workspace" "grafana_workspace" {
   name                     = var.grafana_workspace_name
+  description              = var.grafana_workspace_description
+  grafana_version  = var.grafana_workspace_version
   account_access_type      = var.account_access_type
   authentication_providers = var.authentication_provider
   permission_type          = var.permission_type
