@@ -1,0 +1,9 @@
+aws_region                 = "us-east-1"
+prometheus_workspace_alias = "jenkins-monitoring"
+environment_tag            = "DEV"
+account_access_type        = "CURRENT_ACCOUNT"
+authentication_provider    = ["AWS_SSO"]
+permission_type            = "SERVICE_MANAGED"
+grafana_role_type          = "ADMIN"
+iam_grafana_role_name      = "GrafanaWorkspaceRole"
+grafana_workspace_name = "JenkinsMonitoringWorkspace"
