@@ -56,3 +56,8 @@ variable "grafana_role_type" {
   description = "Type of role to be associated with the Grafana workspace (e.g., ADMIN, EDITOR, VIEWER)"
   type        = string
 }
+
+variable "grafana_datasources" {
+  description = "List of data sources to be configured in the Grafana workspace"
+  type        = list(string)
+}
