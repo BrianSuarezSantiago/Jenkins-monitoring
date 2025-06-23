@@ -27,4 +27,3 @@ resource "aws_grafana_role_association" "grafana_role" {
   user_ids     = ["2235b4c4-2031-7025-3522-8acaf2484b34"]
   workspace_id = aws_grafana_workspace.grafana_workspace.id
 }
-
