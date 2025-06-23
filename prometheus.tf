@@ -6,4 +6,3 @@ resource "aws_prometheus_workspace" "prometheus_workspace" {
     Environment = var.environment_tag
   }
 }
-
