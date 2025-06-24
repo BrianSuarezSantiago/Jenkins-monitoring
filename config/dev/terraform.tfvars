@@ -10,3 +10,5 @@ authentication_provider       = ["AWS_SSO"] # Now its called AWS IAM Identity Ce
 permission_type               = "SERVICE_MANAGED"
 grafana_role_type             = "ADMIN"
 grafana_datasources           = ["PROMETHEUS"]
+grafana_folder_name           = "Jenkins Monitoring"
+iam_user_id                   = ["2235b4c4-2031-7025-3522-8acaf2484b34"]

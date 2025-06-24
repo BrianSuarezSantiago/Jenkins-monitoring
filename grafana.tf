@@ -24,6 +24,22 @@ resource "aws_grafana_workspace" "grafana_workspace" {
 # The role must be created before this association can be made
 resource "aws_grafana_role_association" "grafana_role" {
   role         = var.grafana_role_type
-  user_ids     = ["2235b4c4-2031-7025-3522-8acaf2484b34"]
+  user_ids     = var.iam_user_id
   workspace_id = aws_grafana_workspace.grafana_workspace.id
+}
+
+# Creates a Grafana folder within the workspace
+resource "grafana_folder" "grafana_folder_creation" {
+  title                        = var.grafana_folder_name
+  prevent_destroy_if_not_empty = var.prevent_destroy_if_not_empty
+}
+
+# Creates a Grafana dashboard within the specified folder
+resource "grafana_dashboard" "grafana_dashboard_creation" {
+  folder = grafana_folder.grafana_folder_creation.id
+
+  config_json = jsonencode({
+    "title" : "My Dashboard",
+    "uid" : "my-dashboard-uid"
+  })
 }

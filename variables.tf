@@ -61,3 +61,19 @@ variable "grafana_datasources" {
   description = "List of data sources to be configured in the Grafana workspace"
   type        = list(string)
 }
+
+variable "grafana_folder_name" {
+  description = "Name of the Grafana folder to be created within the workspace"
+  type        = string
+}
+
+variable "prevent_destroy_if_not_empty" {
+  description = "Prevent destruction of the Grafana folder if it is not empty"
+  type        = bool
+  default     = true
+}
+
+variable "iam_user_id" {
+  description = "List of IAM Identity Center user IDs to be associated with the Grafana workspace. It gives access to the Grafana workspace"
+  type        = list(string)
+}
