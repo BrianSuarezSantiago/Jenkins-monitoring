@@ -4,3 +4,4 @@
 *.tfstate
 *.tfstate.backup
 *.info
+.DS_Store
