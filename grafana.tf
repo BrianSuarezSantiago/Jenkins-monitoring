@@ -28,6 +28,9 @@ resource "aws_grafana_role_association" "grafana_role" {
   workspace_id = aws_grafana_workspace.grafana_workspace.id
 }
 
+# Creates a Grafana data source for Prometheus
+
+
 # Creates a Grafana folder within the workspace
 resource "grafana_folder" "grafana_folder_creation" {
   title                        = var.grafana_folder_name
@@ -35,11 +38,19 @@ resource "grafana_folder" "grafana_folder_creation" {
 }
 
 # Creates a Grafana dashboard within the specified folder
-resource "grafana_dashboard" "grafana_dashboard_creation" {
-  folder = grafana_folder.grafana_folder_creation.id
 
-  config_json = jsonencode({
-    "title" : "My Dashboard",
-    "uid" : "my-dashboard-uid"
-  })
+
+# Creates a Grafana workspace service account with 'admin' privileges
+resource "aws_grafana_workspace_service_account" "grafana_service_account" {
+  name         = var.grafana_service_account_name
+  grafana_role = var.grafana_service_account_role_type
+  workspace_id = aws_grafana_workspace.grafana_workspace.id
+}
+
+# Creates a service account token for the Grafana service account
+resource "aws_grafana_workspace_service_account_token" "example" {
+  name               = "example-key"
+  service_account_id = aws_grafana_workspace_service_account.example.service_account_id
+  seconds_to_live    = 3600
+  workspace_id       = aws_grafana_workspace.example.id
 }

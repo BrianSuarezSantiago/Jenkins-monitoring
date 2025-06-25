@@ -77,3 +77,13 @@ variable "iam_user_id" {
   description = "List of IAM Identity Center user IDs to be associated with the Grafana workspace. It gives access to the Grafana workspace"
   type        = list(string)
 }
+
+variable "grafana_service_account_name" {
+  description = "Name of the Grafana service account to be created within the workspace"
+  type        = string
+}
+
+variable "grafana_service_account_role_type" {
+  description = "Role type for the Grafana service account (e.g., ADMIN, EDITOR, VIEWER)"
+  type        = string
+}

@@ -5,10 +5,19 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    grafana = {
+      source  = "grafana/grafana"
+      version = "3.25.3"
+    }
   }
 }
 
 # Configure the AWS Provider
 provider "aws" {
   region = var.aws_region
+}
+
+provider "grafana" {
+  auth = ""
+  url  = "https://${aws_grafana_workspace.grafana_workspace.endpoint}"
 }
