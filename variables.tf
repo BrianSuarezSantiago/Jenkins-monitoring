@@ -87,3 +87,14 @@ variable "grafana_service_account_role_type" {
   description = "Role type for the Grafana service account (e.g., ADMIN, EDITOR, VIEWER)"
   type        = string
 }
+
+variable "service_account_token_name" {
+  description = "Name of the service account token to be created for the Grafana service account"
+  type        = string
+}
+
+variable "service_account_token_secondstolive" {
+  description = "Time in seconds for which the service account token will be valid"
+  type        = number
+  default     = 2592000 # Default to 30 days
+}

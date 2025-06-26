@@ -18,6 +18,6 @@ provider "aws" {
 }
 
 provider "grafana" {
-  auth = ""
+  auth = aws_grafana_workspace_service_account_token.grafana_service_account_token.key
   url  = "https://${aws_grafana_workspace.grafana_workspace.endpoint}"
 }

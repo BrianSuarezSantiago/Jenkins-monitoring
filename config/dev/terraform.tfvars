@@ -14,3 +14,4 @@ grafana_folder_name               = "Jenkins Monitoring"
 iam_user_id                       = ["2235b4c4-2031-7025-3522-8acaf2484b34"]
 grafana_service_account_name      = "Jenkins Service Account Auth"
 grafana_service_account_role_type = "ADMIN"
+service_account_token_name        = "TerraformJenkins"

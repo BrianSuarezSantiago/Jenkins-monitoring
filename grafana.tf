@@ -20,6 +20,22 @@ resource "aws_grafana_workspace" "grafana_workspace" {
   ]
 }
 
+# Creates a Grafana workspace service account with 'admin' privileges
+resource "aws_grafana_workspace_service_account" "grafana_service_account" {
+  name         = var.grafana_service_account_name
+  grafana_role = var.grafana_service_account_role_type
+  workspace_id = aws_grafana_workspace.grafana_workspace.id
+}
+
+# Creates a service account token for the Grafana service account
+resource "aws_grafana_workspace_service_account_token" "grafana_service_account_token" {
+  # The name of the service account token must be unique within the workspace
+  name               = var.service_account_token_name
+  service_account_id = aws_grafana_workspace_service_account.grafana_service_account.service_account_id
+  seconds_to_live    = var.service_account_token_secondstolive
+  workspace_id       = aws_grafana_workspace.grafana_workspace.id
+}
+
 # Associates a role (IAM Identity Center user) with the Grafana workspace
 # The role must be created before this association can be made
 resource "aws_grafana_role_association" "grafana_role" {
@@ -38,19 +54,3 @@ resource "grafana_folder" "grafana_folder_creation" {
 }
 
 # Creates a Grafana dashboard within the specified folder
-
-
-# Creates a Grafana workspace service account with 'admin' privileges
-resource "aws_grafana_workspace_service_account" "grafana_service_account" {
-  name         = var.grafana_service_account_name
-  grafana_role = var.grafana_service_account_role_type
-  workspace_id = aws_grafana_workspace.grafana_workspace.id
-}
-
-# Creates a service account token for the Grafana service account
-resource "aws_grafana_workspace_service_account_token" "example" {
-  name               = "example-key"
-  service_account_id = aws_grafana_workspace_service_account.example.service_account_id
-  seconds_to_live    = 3600
-  workspace_id       = aws_grafana_workspace.example.id
-}
